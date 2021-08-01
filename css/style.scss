@@ -1,0 +1,187 @@
+@charset "utf-8";
+
+html {
+  font-size: 100%;
+}
+
+// タイトル以外の文字
+body {
+  color: #383e45;
+  font-size: 14px;
+}
+
+// text-decorationとはテキストの装飾を指定するプロパティです。装飾の種類には下線、上線、取り消し線、点滅があります。
+// https://html-coding.co.jp/annex/dictionary/css/text-decoration/
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+// リストスタイルについて
+// https://developer.mozilla.org/ja/docs/Web/CSS/list-style
+li {
+  list-style: none;
+}
+
+.site-title {
+  width: 120px;
+  line-height: 1px;
+  padding: 10px 0;
+  a {
+    // https://saruwakakun.com/html-css/basic/display
+    display: block;
+  }
+}
+
+.section-title{
+  display: inline-block;
+  font-size: 32px;
+  // https://developer.mozilla.org/ja/docs/Web/CSS/text-align
+  text-align: center;
+  margin-bottom: 60px;
+  border-bottom: solid 1px #383e45;
+}
+
+.content-title {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+// top画像以外 #bicycle の中のulにも当たってる
+
+.wrapper {
+  // https://developer.mozilla.org/ja/docs/Web/CSS/max-width
+  max-width: 960px;
+  // 960超えたあたりから左右に空白ができる
+  margin: 0 auto 100px auto;
+  // 画面サイズの４％にパディングがあたる
+  padding: 0 4%;
+  // 全ての文字が中央に寄った
+  text-align: center;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+#header {
+  // ロゴとメニューが縦並びから横並びに
+  display: flex;
+  // https://developer.mozilla.org/ja/docs/Web/CSS/justify-content
+  // 要素両端に
+  justify-content: space-between;
+  // アイテムを上下の中央付近にまとめる
+  align-items: center;
+  // .wrapperのマージンを無効に
+  margin: 0 auto;
+  ul {
+    // about,bcycle横並びに
+    display: flex;
+    padding: 10px 0;
+    li {
+      margin-left: 30px;
+      a {
+        color: #24292e;
+      }
+      a:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.mainvisual {
+  margin-bottom: 80px;
+  img {
+    width: 100%;
+    max-width: 1920px;
+    height: 600px;
+    // 画像が縮まらない
+    object-fit: cover;
+  }
+}
+
+/*-------------------------------------------
+About
+-------------------------------------------*/
+
+#about {
+  .content {
+    display: flex;
+    // 全てのコンテンツとを中央に寄せる
+    justify-content: center;
+    // テキストと写真の縦方向の中央揃え
+    align-items: center;
+  }
+  img {
+    width: 100px;
+    height: 100px;
+    // 画像を丸くする
+    // https://developer.mozilla.org/ja/docs/Web/CSS/border-radius
+    border-radius: 50%;
+    margin-right: 30px;
+  }
+  .text {
+    text-align: left;
+  }
+}
+
+/*-------------------------------------------
+Bicycle
+-------------------------------------------*/
+
+#bicycle ul {
+  // liの親のulにflexを当てることですべての要素が横並びに
+  display: flex;
+  justify-content: space-between;
+  li {
+    // 親にjustify-content: space-between;を当ててwidth: 32％;を指定することで均等に配置
+    width: 32%;
+  }
+}
+
+/*-------------------------------------------
+footer
+-------------------------------------------*/
+
+#footer {
+  font-size: 0.5rem;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/*-------------------------------------------
+SP
+-------------------------------------------*/
+
+@media screen and (max-width: 600px) {
+  /*　画面サイズが480pxからはここを読み込む　*/
+  #mainvisual {
+    img {
+      height: calc(100vh - 60px);
+    }
+  }
+
+  #about {
+    .content {
+      // スマホサイズの時要素を縦並べにする
+      // https://developer.mozilla.org/ja/docs/Web/CSS/flex-direction
+      flex-direction: column;
+    }
+    img {
+      // 横並びになっていた時に当たっていたマージンを０に
+      margin-right: 0;
+    }
+  }
+  #bicycle {
+    ul {
+      flex-direction: column;
+      padding-left: 0;
+      li {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
